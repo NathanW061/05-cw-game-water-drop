@@ -1,6 +1,49 @@
 // Variables to control game state
 let gameRunning = false; // Keeps track of whether game is active or not
-let gameState = null;
+let gameState = {
+  score: 0,
+  combo: 0,
+  purity: 100,
+
+  span_score: document.getElementById("score"),
+  span_combo: document.getElementById("combo"),
+  span_purity: document.getElementById("purity"),
+
+  update_value: function(id, value)
+  {
+    // Update the variable to have the new value
+    this[id] = value;
+    // Update the HTML span to use the variable's new value
+    this["span_"+id].textContent = value;
+  },
+
+  reset: function()
+  {
+    this.update_value("score", 0);
+    this.update_value("combo", 0);
+    this.update_value("purity", 100);
+  },
+
+  collectPureDroplet: function(pts)
+  {
+    this.update_value("score", this.score + pts);
+
+    if(this.combo < 9)
+    {
+      this.update_value("combo", this.combo + 1);
+    }
+  },
+
+  collectImpureDroplet: function()
+  {
+    if(this.combo != 0)
+    {
+      this.update_value("combo", 0);
+    }
+
+    this.update_value("purity", this.purity - 10);
+  }
+};
 let dropMaker; // Will store our timer that creates drops regularly
 
 // Wait for button click to start the game
@@ -11,11 +54,7 @@ function startGame() {
   if (gameRunning) return;
 
   gameRunning = true;
-  gameState = {
-    score: 0,
-    purity: 100,
-    combo: 0
-  };
+  gameState.reset();
 
   // Create new drops every second (1000 milliseconds)
   dropMaker = setInterval(createDrop, 1000);
@@ -39,10 +78,17 @@ function createDrop() {
   drop.style.left = xPosition + "px";
 
   // Make drops fall for 4 seconds
-  drop.style.animationDuration = "4s";
+  const dropDuration = Math.random() * 4;
+  drop.style.animationDuration = dropDuration + "s";
 
   // Add the new drop to the game screen
   document.getElementById("game-container").appendChild(drop);
+
+  // Remove drops on click
+  drop.addEventListener("click", () => {
+    drop.remove();
+    gameState.collectPureDroplet(10);
+  });
 
   // Remove drops that reach the bottom (weren't clicked)
   drop.addEventListener("animationend", () => {
