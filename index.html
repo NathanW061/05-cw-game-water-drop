@@ -7,19 +7,48 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div class="game-wrapper">
-        <h1 class="game-title">Water Drop</h1>
-        <p class="game-tagline">Catch the good drops, avoid the bad ones!</p>
-        <div class="score-panel">
-            <div class="score">Score: <span id="score">0</span></div>
-            <div class="timer">Time: <span id="time">30</span>s</div>
-            <button id="start-btn">Start Game</button>
-        </div>
-        
-        <div id="game-container">
-        </div>
-    </div>
     
+    <div class="game-wrapper">
+      <h1 class="game-title">Water Drop</h1>
+      <p class="game-tagline">Catch the good drops, avoid the bad ones!</p>
+      <div class="game-wrapper-b">
+        <div id="game-container"></div>
+        <div id="side-panel">
+          <div class="data-row">
+            <div class="data-placement">
+              <div class="data-field"><span id="score">0</div>
+              SCORE
+            </div>
+          </div>
+          <div class="data-row">
+            <div class="data-placement">
+              <div class="data-field"><span id="combo">0</div>
+              COMBO
+            </div>
+            <div class="data-placement">
+              <div class="data-field"><span id="purity">%</div>
+              PURITY
+            </div>
+          </div>
+          <div class="data-row" id="brand-space">
+            test
+          </div>
+          
+          <div class="data-row">
+            <button id="music-toggle">Music: On</button>
+            <button id="sound-toggle">Sound: On</button>
+          </div>
+          <button id="pause-btn">Pause Game</button>
+          <button id="start-btn">Start Game</button>
+          <button id="about-btn">About <b>charity: water</b></button>
+        </div>
+        <!--div class="score-panel">
+          <div class="score">Score: <span id="score">0</span></div>
+          <div class="timer">Time: <span id="time">30</span>s</div>
+          <button id="start-btn">Start Game</button>
+        </div-->
+      </div>
+    </div>
     <script src="script.js"></script>
 </body>
 </html>
