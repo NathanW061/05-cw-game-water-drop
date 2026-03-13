@@ -1,5 +1,6 @@
 // Variables to control game state
 let gameRunning = false; // Keeps track of whether game is active or not
+let gameState = null;
 let dropMaker; // Will store our timer that creates drops regularly
 
 // Wait for button click to start the game
@@ -10,6 +11,11 @@ function startGame() {
   if (gameRunning) return;
 
   gameRunning = true;
+  gameState = {
+    score: 0,
+    purity: 100,
+    combo: 0
+  };
 
   // Create new drops every second (1000 milliseconds)
   dropMaker = setInterval(createDrop, 1000);
