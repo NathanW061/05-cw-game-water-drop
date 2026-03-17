@@ -15,8 +15,7 @@
   --good-drop: var(--secondary-light-blue);
   --bad-drop: lightcoral;
 
-  --font-a: 'Montserrat', sans-serif; /* Free-to-use alternative to Proxima Nova */
-  --font-b: 'Avenir', sans-serif;
+  --font-a: 'Montserrat', sans-serif; /* Free-to-use alternative to Proxima Nova and Avenir */
 
   /* Game-related variables */
   --anim-play: running;
