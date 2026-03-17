@@ -60,7 +60,7 @@ let gameState = {
       this.update_value("combo", 0);
     }
 
-    this.update_value("purity", this.purity - 12);
+    this.update_value("purity", Math.max(0, this.purity - 12));
     this.update_value("score", Math.max(0, this.score - 5));
   },
 
