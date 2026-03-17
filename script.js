@@ -74,7 +74,7 @@ let gameState = {
       this.paused = true;
       root.style.setProperty("--anim-play", "paused");
       this.setDropMakerState(false);
-      this.setOverlayState(true, "Paused");
+      this.setOverlayState(true, message);
     }
     else
     {
